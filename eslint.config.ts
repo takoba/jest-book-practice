@@ -7,8 +7,6 @@ import globals from 'globals'
 import { config as tseslintConfigFn, configs as tseslintConfigs } from 'typescript-eslint'
 
 export default tseslintConfigFn([
-  { ignores: ['dist'] },
-
   js.configs.recommended,
   tseslintConfigs.recommended,
 
@@ -58,7 +56,8 @@ export default tseslintConfigFn([
   },
 
   {
-    files: ['src/**/*.{ts,tsx}'],
+    files: ['src/**/*.?(c|m){ts,tsx}'],
+    ignores: ['src/**/*.test.?(c|m)ts'],
 
     languageOptions: {
       globals: {
@@ -72,14 +71,14 @@ export default tseslintConfigFn([
           map: [
             ['~', './src'],
           ],
-          extensions: ['.ts', '.mts'],
+          extensions: ['.ts', '.tsx', '.mts', '.mtsx', '.cts', '.ctsx'],
         },
       },
     }
   },
 
   {
-    files: ['tests/**/*.?(c|m){ts,tsx}'],
+    files: ['src/**/*.test.?(c|m)ts'],
 
     ...vitestPlugin.configs.recommended,
 
@@ -97,7 +96,7 @@ export default tseslintConfigFn([
           map: [
             ['~', './src'],
           ],
-          extensions: ['.ts', '.mts'],
+          extensions: ['.ts', '.mts', '.cts'],
         },
       },
     }

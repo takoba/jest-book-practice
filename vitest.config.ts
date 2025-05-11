@@ -3,7 +3,7 @@ import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
   test: {
-    include: ['tests/**/*.test.{ts,mts,cts}'],
+    include: ['src/**/*.test.{ts,mts,cts}'],
   },
 
   resolve: {
@@ -13,7 +13,7 @@ export default defineConfig({
   },
   optimizeDeps: {
     esbuildOptions: {
-      tsconfig: './tests/tsconfig.json',
+      tsconfig: './tsconfig.test.json',
     }
   },
 })
